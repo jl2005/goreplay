@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.32.7
 	github.com/bitly/go-hostpool v0.1.0 // indirect
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869 // indirect
+	github.com/corona10/goimagehash v1.0.3
 	github.com/google/gopacket v1.1.17
 	github.com/klauspost/compress v1.10.10 // indirect
 	github.com/mattbaird/elastigo v0.0.0-20170123220020-2fe47fd29e4b

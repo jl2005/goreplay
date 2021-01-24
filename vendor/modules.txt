@@ -57,6 +57,11 @@ github.com/aws/aws-sdk-go/service/sts/stsiface
 github.com/bitly/go-hostpool
 # github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869
 ## explicit
+# github.com/corona10/goimagehash v1.0.3
+## explicit
+github.com/corona10/goimagehash
+github.com/corona10/goimagehash/etcs
+github.com/corona10/goimagehash/transforms
 # github.com/davecgh/go-spew v1.1.1
 github.com/davecgh/go-spew/spew
 # github.com/eapache/go-resiliency v1.2.0
@@ -89,6 +94,8 @@ github.com/klauspost/compress/zstd/internal/xxhash
 # github.com/mattbaird/elastigo v0.0.0-20170123220020-2fe47fd29e4b
 ## explicit
 github.com/mattbaird/elastigo/lib
+# github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+github.com/nfnt/resize
 # github.com/pierrec/lz4 v2.5.2+incompatible
 ## explicit
 github.com/pierrec/lz4

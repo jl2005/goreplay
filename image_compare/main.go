@@ -42,10 +42,11 @@ import (
 	"sync"
 	"time"
 
+	"github.com/buger/goreplay/image_compare/compare"
 	_ "github.com/buger/goreplay/proto"
 )
 
-const LINE byte = '\n'
+const NEWLINE byte = '\n'
 
 var num int
 var bufSize int
@@ -140,13 +141,13 @@ func process(encodeData []byte, decodeData []byte) {
 		resp := getOrSet(reqID, payload)
 		if resp != nil {
 			req := getRequest(reqID)
-			compare(reqID, req, payload, resp)
+			Compare(reqID, req, payload, resp)
 		}
 	case '3':
 		resp := getOrSet(reqID, payload)
 		if resp != nil {
 			req := getRequest(reqID)
-			compare(reqID, req, resp, payload)
+			Compare(reqID, req, resp, payload)
 		}
 	}
 }
@@ -176,9 +177,17 @@ func getOrSet(reqID string, payload []byte) []byte {
 	return nil
 }
 
-func compare(reqID string, req []byte, oriResp []byte, replayResp []byte) {
-	// FIXME
-	Debug("comapre", reqID)
+func Compare(reqID string, req []byte, oriResp []byte, replayResp []byte) {
+	result := make(map[string]compare.Diff)
+	compare.CompareHttp(oriResp, replayResp, result)
+	if len(result) != 0 {
+		compare.CompareImage(oriResp, replayResp, result)
+	}
+	if len(result) == 0 {
+		Debug("%s request is same", reqID)
+	} else {
+		Debug("%s request is diff %v", reqID, result)
+	}
 }
 
 func encode(buf []byte) []byte {
